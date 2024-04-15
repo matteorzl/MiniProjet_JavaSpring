@@ -14,15 +14,16 @@ export default {
       axios.get(`http://localhost:8080/api/client/` + id)
         .then(response => {
           this.clientInfos = response.data;
+          console.log(this.clientInfos)
         })
         .catch(error => {
           console.error("Erreur lors de la récupération des messages reçus: ", error);
         });
     },
     updateClient() {
-      axios.put(`http://localhost:8080/api/client/${this.messages.id}`, {
-        nom: this.messages.nom,
-        prenom: this.messages.prenom
+      axios.put(`http://localhost:8080/api/client/${this.clientInfos.id}`, {
+        nom: this.clientInfos.nom,
+        prenom: this.clientInfos.prenom
       })
         .then(() => {
           console.log("Client mis à jour avec succès");
